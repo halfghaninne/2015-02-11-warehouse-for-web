@@ -1,0 +1,15 @@
+<h2>Here's a list of all your database's products:</h2>
+
+<% @ids = [] %>
+<% @descriptions = [] %>
+
+<% Product.all("products").each do |hash| %>
+  <% @ids << hash["id"] %>
+  <% @descriptions << hash["description"] %>
+<% end %>
+<!-- Other keys of interest: quantity, price, serial number (don't add until you figure out how to format)-->
+
+<!-- NEED TO FIGURE OUT HOW TO FORMAT  -->
+
+<%= @ids %><br>
+<%= @descriptions %>

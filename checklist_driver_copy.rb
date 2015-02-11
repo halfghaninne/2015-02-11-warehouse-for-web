@@ -8,7 +8,6 @@ require_relative "location.rb"
 require_relative "category.rb"
 require_relative "product.rb"
 
-
 # puts "WELCOME TO THE WAREHOUSE MANAGEMENT SYSTEM! \n\n What would you like to do? \n\n"
 # puts "1 - Pull up product records for a location\n2 - Pull up product record"
 # puts "3 - Edit product information\n4 - Transfer product\n5 - Delete a product"

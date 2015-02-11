@@ -1,0 +1,14 @@
+<h2>Here's a list of all your database's locations:</h2>
+
+<% @ids = [] %>
+<% @cities = [] %>
+
+<% Location.all("locations").each do |hash| %>
+  <% @ids << hash["id"] %>
+  <% @cities << hash["city"] %>
+<% end %>
+
+<!-- NEED TO FIGURE OUT HOW TO FORMAT  -->
+
+<%= @ids %><br>
+<%= @cities %>

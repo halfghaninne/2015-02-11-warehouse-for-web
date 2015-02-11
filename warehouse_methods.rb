@@ -51,6 +51,25 @@ module WarehouseMethods
         
       end
       
+      # #################################
+      # UNSUCCESSFUL ATTEMPT AT FORMATTING METHOD TO HELP WITH SINATRA
+      # #################################
+      #
+      # def all_formatted(table_name)
+      #   results = DATABASE.execute("SELECT * FROM #{table_name}")
+      #
+      #   n = results.length
+      #   x = 0
+      #
+      #   until x = n do
+      #     record_details = results[x]
+      #     placeholder_instance = self.new(record_details)
+      #     placeholder_instance.list_attributes
+      #   end
+      # end
+      # #################################
+      # #################################
+      
       # Public: .all
       # Returns all records in a given table.
       #
