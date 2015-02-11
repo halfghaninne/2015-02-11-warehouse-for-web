@@ -1,5 +1,18 @@
 require "sinatra"
 
+### LOL IZ THIS EVN WHERE THIS GOZ??? ###
+# require 'pry'
+# require 'sqlite3'
+#
+# DATABASE = SQLite3::Database.new("warehouse_mgr.db")
+#
+# require_relative "warehouse_mgr_setup.rb"
+# require_relative "location.rb"
+# require_relative "category.rb"
+# require_relative "product.rb"
+
+
+
 get "/" do 
   erb :homepage
 end
@@ -33,10 +46,13 @@ end
 before "/list_all" do
   if params[:table_name] == "locations"
     @table_name = "locations"
+    @class = Location
   elsif params[:table_name] == "products"
     @table_name = "products"
+    @class = Product
   elsif params[:table_name] == "categories"
     @table_name = "categories"
+    @class = Category
   end
 end
 

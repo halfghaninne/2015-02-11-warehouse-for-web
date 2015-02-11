@@ -1,7 +1,7 @@
 <h2>~*WELCOME TO THE WAREHOUSE MANAGER *~</h2>
 
 <h4>What would you like to do?</h4><br>
-<form action="redirect_prompt">
+<form action="/redirect">
   <input type = "radio" name ="method_to_call" value ="find">Pull information for a particular product<br>
   <input type = "radio" name ="method_to_call" value ="fetch_by">Pull all product records from a given location<br>
   <input type = "radio" name ="method_to_call" value ="find">Edit product information<br>
@@ -11,6 +11,8 @@
       <option name="table_name" value="locations">Locations</option>
       <option name="table_name" value="products">Products</option>
       <option name="table_name" value="categories">Categories</option>
+      <br><br>
+  <input type ="submit">
       
       
   <!-- <input type = "radio" name ="" value ="">Delete a product<br>
