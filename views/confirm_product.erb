@@ -1,0 +1,12 @@
+<h2>Does this info look right?</h2>
+
+<p><b>Serial Number:</b> <%= @serial_number %></p>
+<p><b>Description:</b> <%= @description %></p>
+<p><b>Cost per item:</b> <%= @cost %></p>
+<p><b>Quantity:</b> <%= @quantity %></p>
+<p><b>Location:</b> <%= @location_id %></p>
+<p><b>Category:</b> <%= @category_id %></p>
+
+<form action="/added_product">
+  <input type ="submit">
+</form>

@@ -6,6 +6,7 @@ require 'sqlite3'
 DATABASE = SQLite3::Database.new("warehouse_mgr.db")
 
 require_relative "warehouse_mgr_setup.rb"
+require_relative "warehouse_methods.rb"
 require_relative "location.rb"
 require_relative "category.rb"
 require_relative "product.rb"
@@ -63,6 +64,28 @@ end
 get "/new_product" do
   erb :new_product
 end
+
+get "/confirm_product" do
+  @serial_number = params[:serial_number].to_i
+  @description = params[:description]
+  @location_id = params[:location_id].to_i
+  @category_id = params[:category_id].to_i
+  @cost = params[:cost].to_i
+  @quantity = params[:quantity].to_i
+  
+  erb :confirm_product
+end
+
+get "/added_product" do
+  added_product = Product.new("serial_number" => @serial_number, "description" => @description,
+  "location_id" => @location_id, "category_id" => @category_id, "cost" => @cost,
+  "quantity" => @quantity)
+  
+  @id = added_product.id
+  
+  erb :added_product
+end
+
 #
 #
 # get "/edit" do

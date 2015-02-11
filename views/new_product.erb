@@ -1,0 +1,43 @@
+<h2>ENTER A NEW PRODUCT:</h2>
+
+<form action="/confirm_product">
+  Serial Number:<br>
+  <input type="text" name="serial_number" size="25">
+
+  <br><br>
+
+  Product Name:<br>
+  <input type="text" name="description" size="35">
+
+  <br><br>
+
+  Cost (per item)<br>
+  <input type="text" name="cost" size="25">
+  
+  <br><br>
+
+  Quantity:<br>
+  <input type="text" name="quantity" size="25">
+
+  <br><br>
+
+  Location: <select name="location_id" value="city" size="1">
+        <option name="city" value="nil">Please Select</option>
+        <option name="city" value="1">Omaha - HQ</option>
+        <option name="city" value="2">Austin</option>
+        <option name="city" value="3">Kansas City</option>
+      </select>
+
+  <br><br>
+
+  Category: <select name="category_id" value="name" size="1">
+        <option name="name" value="nil">Please Select</option>
+        <option name="name" value="1">Misc.</option>
+        <option name="name" value="2">Books</option>
+        <option name="name" value="3">Movies</option>
+      </select>
+      
+  <br><br>
+  
+  <input type ="submit">
+</form>
