@@ -21,10 +21,11 @@ get "/redirect" do
     redirect to "/find"
   elsif params[:method_to_call] == "fetch_by"
     redirect to "/fetch_by"
-  elsif params[:method_to_call] == "list_all" ### CHECK - locations ###
-      if params[:table_name] == "locations"
-        redirect to "/list_all_locations"
-      end
+  elsif params[:table_name] == "all_locations" ### CHECK - locations ###
+      redirect to "/list_all_locations"
+      # if params[:table_name] == "locations"
+      #   redirect to "/list_all_locations"
+      # end
   elsif params[:method_to_call] == "new_product" 
     redirect to "/new_product"
   end
