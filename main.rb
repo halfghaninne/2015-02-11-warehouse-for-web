@@ -25,7 +25,7 @@ get "/redirect" do
       if params[:table_name] == "locations"
         redirect to "/list_all_locations"
       end
-  elsif params[:method_to_call] == "new_product" #### CHECK ####
+  elsif params[:method_to_call] == "new_product" 
     redirect to "/new_product"
   end
 end
@@ -78,7 +78,7 @@ end
 # end
 
 get "/new_product" do
-  erb :new_product
+  erb :"product/new_product"
   # if we want to nest folders within /views this would read
   # erb :"products/new"
 end
@@ -91,7 +91,7 @@ get "/confirm_product" do
   @cost = params[:cost].to_i
   @quantity = params[:quantity].to_i
   
-  erb :confirm_product
+  erb :"product/confirm_product"
 end
 
 get "/added_product" do
@@ -111,7 +111,7 @@ get "/added_product" do
   
   @id = added_product.id
   
-  erb :added_product
+  erb :"product/added_product"
 end
 
 #
