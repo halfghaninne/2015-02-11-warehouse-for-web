@@ -16,22 +16,24 @@ get "/" do
   erb :homepage
 end
 
+"/redirect?method_to_call=new_product&method_to_call=nil"
+
+
 get "/redirect" do
-  binding.pry
   if params[:method_to_call] == "find"
     redirect to "/find"
   elsif params[:method_to_call] == "fetch_by"
     redirect to "/fetch_by"
-  elsif params[:method_to_call] == "all_locations" 
-      redirect to "/list_all_locations"
-      # if params[:table_name] == "locations"
-      #   redirect to "/list_all_locations"
-      # end
   elsif params[:method_to_call] == "new_product" 
     redirect to "/new_product"
+  elsif params[:list_all_of] == "all_locations" 
+      redirect to "/list_all_locations"
+  elsif params[:list_all_of] == "all_products" 
+      redirect to "/list_all_products"
+  elsif params[:list_all_of] == "all_categories" 
+      redirect to "/list_all_categories"
   end
 end
-
 
 # get "/find" do
 #
@@ -44,40 +46,26 @@ end
 # get "/fetch_by" do
 # end
 
-
-# before "/list_all" do
-#   if params[:table_name] == "locations"
-#     redirect "/list_all_locations"
-#   # elsif params[:table_name] == "products"
-#   #   @table_name = "products"
-#   #   redirect "/list_all"
-# #   elsif params[:table_name] == "categories"
-# #     @table_name = "categories"
-# #     @class = Category
-#   end
-# end
-
-
 get "/list_all_locations" do
   @table_name = "locations"
   @locations_all = Location.all("locations")
   
-  erb :"locations/list_all"
+  erb :"location/list_all"
 end
 
-# get "/list_all_products" do
-#   @table_name = "products"
-#   @products_all = Location.all("products")
-#
-#   erb :"products/list_all"
-# end
-#
-# get "/list_all_categories" do
-#   @table_name = "categories"
-#   @categories_all = Location.all("categories")
-#
-#   erb :"categories/list_all"
-# end
+get "/list_all_products" do 
+  @table_name = "products"
+  @products_all = Product.all("products")
+  
+  erb :"product/list_all"
+end
+  
+get "/list_all_categories" do 
+  @table_name = "categories"
+  @categories_all = Category.all("categories")
+  
+  erb :"category/list_all"
+end
 
 get "/new_product" do
   erb :"product/new_product"

@@ -3,6 +3,16 @@
 <h4>What would you like to do?</h4><br>
 <form action="/redirect">
   
+  View list of: <select name="list_all_of" size="1">
+      <option value="nil">Please Select</option>
+      <option value="all_locations">Locations</option>
+      <option value="all_products">Products</option>
+      <option value="all_categories">Categories</option>
+    </select><br><br>
+  
+  <b>OR</b>
+  <br><br>
+    
   <input type = "radio" name ="method_to_call" value ="find">Pull information for a particular product<br>
   
   <input type = "radio" name ="method_to_call" value ="fetch_by">Pull all product records from a given location<br>
@@ -12,13 +22,6 @@
   <input type = "radio" name ="method_to_call" value ="find">Edit product information<br>
   
   <input type = "radio" name ="method_to_call" value ="find">Transfer a product<br>
-  
-  <input type = "radio" name ="method_to_call">View list of: <select name="list_all" size="1">
-      <option value="nil">Please Select</option>
-      <option value="all_locations">Locations</option>
-      <option value="all_products">Products</option>
-      <option value="all_categories">Categories</option>
-    </select>
       
   <br><br>
       

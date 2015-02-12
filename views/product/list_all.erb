@@ -1,0 +1,7 @@
+<h2>Here's a list of all your database's <%= @table_name %>:</h2>
+
+
+<% @products_all.each do |hash| %>
+  <p><%= hash["id"] %> - <%= hash["serial_number"] %> - <b> <%= hash["description"] %> </b> - <%= hash["quantity"] %> - $<%= hash["cost"] %> </p>
+<% end %>
+
