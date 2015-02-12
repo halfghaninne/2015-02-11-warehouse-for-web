@@ -58,6 +58,8 @@ end
 
 
 get "/list_all" do
+  @locations_all = Location.all("locations")
+  
   erb :locations_list_all
 end
 
@@ -77,6 +79,15 @@ get "/confirm_product" do
 end
 
 get "/added_product" do
+  @serial_number = params[:serial_number].to_i
+  @description = params[:description]
+  @location_id = params[:location_id].to_i
+  @category_id = params[:category_id].to_i
+  @cost = params[:cost].to_i
+  @quantity = params[:quantity].to_i
+  
+  binding.pry 
+  
   added_product = Product.new("serial_number" => @serial_number, "description" => @description,
   "location_id" => @location_id, "category_id" => @category_id, "cost" => @cost,
   "quantity" => @quantity)
