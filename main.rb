@@ -12,12 +12,10 @@ require_relative "category.rb"
 require_relative "product.rb"
 
 
+
 get "/" do 
   erb :homepage
 end
-
-"/redirect?method_to_call=new_product&method_to_call=nil"
-
 
 get "/redirect" do
   if params[:method_to_call] == "find"
@@ -35,16 +33,43 @@ get "/redirect" do
   end
 end
 
-# get "/find" do
-#
-#   if params[:field_to_edit] != nil
-#     redirect to "edit"
-#   end
-# end
-#
-#
-# get "/fetch_by" do
-# end
+get "/find" do
+  erb :"product/find_specific_product"
+end
+
+get "/return_product" do
+  @id = params[:search_id].to_i
+  @description = params[:search_description]
+  
+  #if params[:search_description].length == 0
+    @product_with_id = Product.find("products", @id)
+    
+    @serial_number = @product_with_id.serial_number
+    @description = @product_with_id.description
+    @quantity = @product_with_id.quantity
+    @cost = @product_with_id.cost
+    @location_id = @product_with_id.location_id
+    @category_id = @product_with_id.category_id
+  #######################################################
+  # FEATURE DOES NOT WORK YET IN WAREHOUSE RUBY PROGRAM #
+  #######################################################
+  # else
+  #   @product_with_description = Product.fetch_by("description" => @description)
+  #
+  #   @id = @product_with_description.id
+  #   @serial_number = @product_with_description.serial_number
+  #   @quantity = @product_with_description.quantity
+  #   @cost = @product_with_description.cost
+  #   @location_id = @product_with_description.location_id
+  #   @category_id = @product_with_description.category_id
+  #end
+  
+  erb :"product/return_product"
+end
+
+get "/fetch_by" do
+end
+
 
 get "/list_all_locations" do
   @table_name = "locations"
@@ -69,8 +94,6 @@ end
 
 get "/new_product" do
   erb :"product/new_product"
-  # if we want to nest folders within /views this would read
-  # erb :"products/new"
 end
 
 get "/confirm_product" do
@@ -104,7 +127,5 @@ get "/added_product" do
   erb :"product/added_product"
 end
 
-#
-#
 # get "/edit" do
 # end
