@@ -82,7 +82,7 @@ module WarehouseMethods
       # State Changes:
       # None.
       
-      def all(table_name)
+      def all(table_name) 
         DATABASE.execute("SELECT * FROM #{table_name}")
       end
       

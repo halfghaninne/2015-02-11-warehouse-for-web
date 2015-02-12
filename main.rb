@@ -16,16 +16,16 @@ get "/" do
   erb :homepage
 end
 
-
-### SHOULD THIS BE A METHOD INSTEAD OF A PATH??? ###
 get "/redirect" do
   if params[:method_to_call] == "find"
     redirect to "/find"
   elsif params[:method_to_call] == "fetch_by"
     redirect to "/fetch_by"
-  elsif params[:method_to_call] == "list_all"
-    redirect to "/list_all"
-  elsif params[:method_to_call] == "new_product"
+  elsif params[:method_to_call] == "list_all" ### CHECK - locations ###
+      if params[:table_name] == "locations"
+        redirect to "/list_all_locations"
+      end
+  elsif params[:method_to_call] == "new_product" #### CHECK ####
     redirect to "/new_product"
   end
 end
@@ -43,28 +43,44 @@ end
 # end
 
 
-before "/list_all" do
-  if params[:table_name] == "locations"
-    @table_name = "locations"
-    redirect "/list_all"
-  # elsif params[:table_name] == "products"
-  #   @table_name = "products"
-  #   redirect "/list_all"
-#   elsif params[:table_name] == "categories"
-#     @table_name = "categories"
-#     @class = Category
-  end
-end
+# before "/list_all" do
+#   if params[:table_name] == "locations"
+#     redirect "/list_all_locations"
+#   # elsif params[:table_name] == "products"
+#   #   @table_name = "products"
+#   #   redirect "/list_all"
+# #   elsif params[:table_name] == "categories"
+# #     @table_name = "categories"
+# #     @class = Category
+#   end
+# end
 
 
-get "/list_all" do
+get "/list_all_locations" do
+  @table_name = "locations"
   @locations_all = Location.all("locations")
   
-  erb :locations_list_all
+  erb :"locations/list_all"
 end
+
+# get "/list_all_products" do
+#   @table_name = "products"
+#   @products_all = Location.all("products")
+#
+#   erb :"products/list_all"
+# end
+#
+# get "/list_all_categories" do
+#   @table_name = "categories"
+#   @categories_all = Location.all("categories")
+#
+#   erb :"categories/list_all"
+# end
 
 get "/new_product" do
   erb :new_product
+  # if we want to nest folders within /views this would read
+  # erb :"products/new"
 end
 
 get "/confirm_product" do
@@ -86,11 +102,12 @@ get "/added_product" do
   @cost = params[:cost].to_i
   @quantity = params[:quantity].to_i
   
-  binding.pry 
   
   added_product = Product.new("serial_number" => @serial_number, "description" => @description,
   "location_id" => @location_id, "category_id" => @category_id, "cost" => @cost,
   "quantity" => @quantity)
+  
+  added_product.insert("products")
   
   @id = added_product.id
   
