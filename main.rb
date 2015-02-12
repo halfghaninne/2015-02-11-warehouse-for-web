@@ -17,11 +17,12 @@ get "/" do
 end
 
 get "/redirect" do
+  binding.pry
   if params[:method_to_call] == "find"
     redirect to "/find"
   elsif params[:method_to_call] == "fetch_by"
     redirect to "/fetch_by"
-  elsif params[:table_name] == "all_locations" ### CHECK - locations ###
+  elsif params[:method_to_call] == "all_locations" 
       redirect to "/list_all_locations"
       # if params[:table_name] == "locations"
       #   redirect to "/list_all_locations"
