@@ -25,12 +25,20 @@ get "/redirect" do
   elsif params[:method_to_call] == "new_product" 
     redirect to "/new_product"
   elsif params[:list_all_of] == "all_locations" 
-      redirect to "/list_all_locations"
+    redirect to "/list_all_locations"
   elsif params[:list_all_of] == "all_products" 
-      redirect to "/list_all_products"
+    redirect to "/list_all_products"
   elsif params[:list_all_of] == "all_categories" 
-      redirect to "/list_all_categories"
+    redirect to "/list_all_categories"
+  elsif params[:method_to_call] == "find_to_edit" 
+    redirect to "/coming_soon"
+  elsif params[:method_to_call] == "find_to_transfer" 
+    redirect to "/coming_soon"
   end
+end
+
+get "/coming_soon" do
+  erb :coming_soon_message
 end
 
 get "/find" do
@@ -52,6 +60,7 @@ get "/return_product" do
     @category_id = @product_with_id.category_id
   #######################################################
   # FEATURE DOES NOT WORK YET IN WAREHOUSE RUBY PROGRAM #
+  # FOR STRING QUERIES, ONLY FOR INTEGER QUERIES        #
   #######################################################
   # else
   #   @product_with_description = Product.fetch_by("description" => @description)
@@ -68,6 +77,14 @@ get "/return_product" do
 end
 
 get "/fetch_by" do
+  erb :"product/fetch_by_location"
+end
+
+get "/return_product_records_at_location" do
+  @location_id = params[:location_to_fetch].to_i
+  @product_records = Product.fetch_by( "location_id" => @location_id )
+
+  erb :"product/return_records_at_location"
 end
 
 

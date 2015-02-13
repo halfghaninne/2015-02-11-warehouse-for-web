@@ -83,15 +83,15 @@ class Product
     results.each do |r|
       results_as_objects << self.new(r)
     end
-    
-    # n = results_as_objects.length
-    
-    x = 0
-    
-    until x == results_as_objects.length
-      puts "Description: '#{results_as_objects[x].description}' Quantity: #{results_as_objects[x].quantity}"
-      x+=1
-    end
+#
+#     # n = results_as_objects.length
+#
+#     x = 0
+#
+#     until x == results_as_objects.length
+#       puts "Description: '#{results_as_objects[x].description}' Quantity: #{results_as_objects[x].quantity}"
+#       x+=1
+#     end
 
   end
   

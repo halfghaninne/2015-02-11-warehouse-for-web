@@ -1,0 +1,10 @@
+<h2>FOUND!</h2>
+
+<p>We found at least one item matching your search:</p>
+
+<% @product_records.each do |record| %>
+   <p><b><%= record["id"] %></b> - <%= record["serial_number"] %> - <em> <%= record["description"] %> </em> - <%= record["quantity"] %> - $<%= record["cost"] %> - Category: <%= record["category_id"] %></p>
+<% end %>
+
+
+<!-- <p><b><%= @id %></b> - <%= @serial_number %> - <em> <%= @description %> </em> - <%= @quantity %> - $<%= @cost %> - Location: <%= @location_id %> - Category: <%= @category_id %></p> -->
